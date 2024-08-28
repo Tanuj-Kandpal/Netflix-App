@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
 
     const [lang, setLang] = useState("English");
+
+    const navigate = useNavigate();
 
     function HeadingLanguage({ heading1, heading2, heading3 }) {
         return <div className="mt-40 text-center">
@@ -12,8 +15,12 @@ function HomePage() {
         </div>
     }
 
+    function handleNavigation() {
+        navigate("/Login");
+    }
+
     function SignInLanguage({ title }) {
-        return <h3 className='bg-[#C11119] hover:cursor-pointer p-1 px-3 rounded-md font-bold text-white text'>{title}</h3>
+        return <button onClick={handleNavigation} className='bg-[#C11119] hover:cursor-pointer p-1 px-3 rounded-md font-bold text-white text'>{title}</button>
 
     }
 
