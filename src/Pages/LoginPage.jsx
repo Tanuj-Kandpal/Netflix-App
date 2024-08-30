@@ -1,61 +1,46 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
+import Form from "../Components/Form";
 import { useNavigate } from "react-router-dom";
 function LoginPage() {
-
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const [showUnreguser, setshowUnreguser] = useState(false);
     const [showReguser, setshowReguser] = useState(true);
     const navigate = useNavigate();
+    /**
+     * This is implementation to avoid heartbeats which is getting printed in console
+     */
 
-    // const auth = getAuth();
-    createUserWithEmailAndPassword()
-        .then((userCredential) => {
-            // Signed up 
-            // const user = userCredential.user;
-            // ...
-        })
-        .catch((error) => {
-            // const errorCode = error.code;
-            // const errorMessage = error.message;
-            // ..
-        });
+    // Save the original console.log function
+    const originalConsoleLog = console.log;
 
-    function handleEmail(email) {
-        const enteredEmail = email.target.value;
-        setEmail(enteredEmail);
+    console.log = function (...args) {
+        // Check if the log message contains the word "heartbeats"
+        if (args.some(arg => typeof arg === 'string' && arg.includes('heartbeats'))) {
+            return; // Skip the log message
+        }
+
+        // Otherwise, use the original console.log
+        originalConsoleLog.apply(console, args);
     }
 
-    function handlePassword(password) {
-        const enteredPassword = password.target.value;
-        setPassword(enteredPassword);
-    }
 
     function UnregUser() {
         return <>
-            <div className="flex flex-col gap-5 bg-black bg-opacity-75 p-10 rounded-lg min-w-96 h-3/4 shadow-lg text-center">
-                <input className="p-3 rounded-lg text-white  bg-[#121312]" type="text" onChange={handleEmail} placeholder="Email Address" value={email} />
-                <input className="p-3 rounded-lg text-white bg-[#121312]" onChange={handlePassword} type="text" placeholder="Password" value={password} />
+            <div className="flex flex-col gap-5 bg-black bg-opacity-75 p-10 rounded-lg min-w-96 shadow-lg text-center">
+                <Form heading1={"Sign Up"} />
             </div>
         </>
     }
+
     function handleUnreguser() {
+        navigate("/SignUp");
         setshowUnreguser(true);
         setshowReguser(false);
     }
 
-    function handleSignIn() {
-        navigate('/Netflix');
-    }
-
     function RegUser() {
         return <>
-            <div className="flex flex-col gap-5 bg-black bg-opacity-75 p-10 rounded-lg min-w-96 h-3/4 shadow-lg text-center">
-                <h1 className="font-[700] self-start text-white text-3xl">SignIn</h1>
-                <input className="p-3 rounded-lg text-white  bg-[#121312]" type="text" onChange={handleEmail} placeholder="Email Address" value={email} />
-                <input className="p-3 rounded-lg text-white bg-[#121312]" onChange={handlePassword} type="text" placeholder="Password" value={password} />
-                <button className="p-3 rounded-lg text-white bg-[#C11119]" onClick={handleSignIn}>Sign In</button>
+            <div className="flex flex-col gap-5 bg-black bg-opacity-75 p-10 rounded-lg min-w-96 h-2/4 shadow-lg text-center">
+                <Form heading1={"Sign In"} ></Form>
                 <h1 className="text-white" >OR</h1>
                 <button className="p-3 rounded-lg text-white bg-[#302C2F] bg-opacity-95" onClick={handleUnreguser}>Create a new User</button>
             </div>

@@ -1,7 +1,4 @@
-
 import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-import { getAuth } from 'firebase/auth';
 const firebaseConfig = {
     apiKey: "AIzaSyAJd3ljViZuhVcjSFufZZQkfpE9E5DBr3k",
     authDomain: "netflix-clone-fef3c.firebaseapp.com",
@@ -13,6 +10,5 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
-export const firebaseAuth = getAuth(app);
+export const app = initializeApp(firebaseConfig);
+

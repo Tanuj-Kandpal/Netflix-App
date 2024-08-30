@@ -9,6 +9,7 @@ function App() {
       <Route path="/Login" element={<LoginPage />} />
       <Route path="/" element={<HomePage />} />
       <Route path="/Netflix" element={<Netflix />} />
+      <Route path="/SignUp" element={<LoginPage />}></Route>
     </Routes>
   </BrowserRouter>
 }
