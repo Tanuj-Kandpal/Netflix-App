@@ -29,11 +29,16 @@ function Netflix() {
                 height: "100%"
             }} >
                 <Navbar />
-                <Banner poster={netflixData[randomNum]?.backdrop_path} heading={netflixData[randomNum]?.original_title}
-                    description={netflixData[randomNum]?.overview} />
+                <Banner poster={netflixData[randomNum]?.backdrop_path} heading={netflixData[randomNum]?.original_title} description={netflixData[randomNum]?.overview} />
             </div>
             <Row heading={"Netflix Originals"} fetchUrl={request.fetchNetflixOriginals} />
             <Row heading={"Trending Now"} fetchUrl={request.fetchTrending} />
+            <Row heading={"Top Rated"} fetchUrl={request.fetchTopRated} />
+            <Row heading={"Action"} fetchUrl={request.fetchActionMovie} />
+            <Row heading={"Comedy"} fetchUrl={request.fetchComedyMovie} />
+            <Row heading={"Horror"} fetchUrl={request.fetchHorroMovie} />
+            <Row heading={"Romance"} fetchUrl={request.fetchRomanceMovie} />
+            <Row heading={"Documentry"} fetchUrl={request.fetchDocumentaryMovie} />
         </div>
 
 
