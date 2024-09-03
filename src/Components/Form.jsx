@@ -48,8 +48,9 @@ function Form({ heading1 }) {
     function handleSignIn() {
         if (heading1 !== "Sign In") {
             signupUser()
+        } else {
+            signInUser()
         }
-        signInUser()
     }
 
 

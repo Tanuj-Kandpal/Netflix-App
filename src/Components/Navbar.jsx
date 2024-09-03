@@ -1,6 +1,16 @@
+import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaPowerOff } from "react-icons/fa";
+import { Navigate, useNavigate } from "react-router-dom";
 function Navbar() {
+    const naivgate = useNavigate();
+    const [signIn, setSignIn] = useState(true);
+
+    function handleSignOff() {
+        setSignIn(false);
+        naivgate('/');
+    }
+
     return <>
         <div className="flex justify-between px-16 py-5 text-white font-semibold hover:cursor-pointer">
             <div className="flex items-center gap-10">
@@ -13,8 +23,8 @@ function Navbar() {
                 </li>
             </div>
             <div className="flex gap-10 justify-center items-center">
-                <div className=""><FaSearch className="size-4" /></div>
-                <div><FaPowerOff className="fill-[#d22a33]" /></div>
+                <div className=""><FaSearch className="size-4 " /></div>
+                <button onClick={handleSignOff}><FaPowerOff /></button>
             </div>
         </div>
     </>
