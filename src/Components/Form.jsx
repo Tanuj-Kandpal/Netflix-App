@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { EmailContext, PasswordContext } from "../Context";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app } from "../firebase";
+import 'react-toastify/dist/ReactToastify.css';
+import { showErrorToast, showSuccessToast } from "../HelperFiles/Toast";
 
 function Form({ heading1 }) {
     const auth = getAuth(app);
@@ -13,17 +15,22 @@ function Form({ heading1 }) {
 
     const signInUser = () => {
         signInWithEmailAndPassword(auth, email, password).then(() => {
+            showSuccessToast('Log In Successfully')
             navigate('/Netflix');
-        }).catch(() => {
 
+        }).catch((err) => {
+            const updatedMsg = err.message.split(':');
+            showErrorToast(updatedMsg[1]);
         })
     }
 
     const signupUser = () => {
-        createUserWithEmailAndPassword(auth, email, password).then((value) => {
-            console.log(value);
+        createUserWithEmailAndPassword(auth, email, password).then(() => {
+            showSuccessToast('Account Created Successfully')
             navigate('/Netflix');
-        }).catch(() => {
+        }).catch((error) => {
+            const updatedMsg = error.message.split(':');
+            showErrorToast(updatedMsg[1]);
 
         });
     }

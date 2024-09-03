@@ -8,17 +8,14 @@ function Row({ heading, fetchUrl }) {
             const response = await fetch(fetchUrl);
             const result = await response.json();
             setSeries(result.results);
-            console.log(result.results);
-
         })();
     }, [fetchUrl])
-    console.log(series.length);
     return <>
         <div className="mt-9 ml-10 overflow-hidden w-6/6 mr-10">
             <div className="text-white text-2xl  font-bold mb-6">{heading}</div>
             <div className="flex gap-2 overflow-x-scroll no-scrollbar w-screen">
                 {series.map((series) => {
-                    return <img className="h-72 rounded-sm" src={`${image_baseurl}${series.poster_path}`} alt="" key={series.index} />
+                    return <img className="h-72 rounded-sm hover:scale-105 transition-all" src={`${image_baseurl}${series.poster_path}`} alt="" key={series.index} />
                 })
                 }
             </div>

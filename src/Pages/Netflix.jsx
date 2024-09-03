@@ -21,7 +21,7 @@ function Netflix() {
     }, []);
     const finalImage = `${image_baseuri}${netflixData[randomNum]?.backdrop_path}`;
     return <>
-        <div className="bg-[#111111]">
+        <div className="bg-[#111111] scroll-smooth">
             <div style={{
                 backgroundSize: "cover",
                 backgroundImage: `url("${finalImage}")`,
