@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { EmailContext, PasswordContext } from "../context";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import 'react-toastify/dist/ReactToastify.css';
-import { showErrorToast, showSuccessToast } from "../HelperFiles/Toast";
+import { showErrorToast, showSuccessToast } from "../HelperFiles/toast";
 import { app } from '../firebase';
 
 function Form({ heading1 }) {
