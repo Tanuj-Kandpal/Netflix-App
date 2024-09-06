@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { EmailContext, PasswordContext } from "../Context";
+import { EmailContext, PasswordContext } from "../context";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import 'react-toastify/dist/ReactToastify.css';
 import { showErrorToast, showSuccessToast } from "../HelperFiles/Toast";
