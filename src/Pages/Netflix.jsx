@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Banner from "../Components/Banner";
-import Navbar from "../Components/NavBar";
+import Navbar from "../Components/Navbar";
 import request from "../request";
 import Row from "../Components/Row";
 
