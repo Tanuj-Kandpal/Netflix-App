@@ -2,11 +2,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { EmailContext, PasswordContext } from "../Context";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { app } from "../firebase";
 import 'react-toastify/dist/ReactToastify.css';
 import { showErrorToast, showSuccessToast } from "../HelperFiles/Toast";
+import { app } from '../firebase';
 
 function Form({ heading1 }) {
+    console.log(app);
+
     const auth = getAuth(app);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

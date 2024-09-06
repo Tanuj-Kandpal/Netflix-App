@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaPowerOff } from "react-icons/fa";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function Navbar() {
     const naivgate = useNavigate();
-    const [signIn, setSignIn] = useState(true);
+    const [, setSignIn] = useState(true);
 
     function handleSignOff() {
         setSignIn(false);
