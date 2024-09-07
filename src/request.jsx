@@ -1,5 +1,6 @@
-const API_KEY = "eca8176b83a76f5aafb53911b54fa652";
-const BASE_URI = `https://api.themoviedb.org/3/`;
+// const API_KEY = "eca8176b83a76f5aafb53911b54fa652";
+const API_KEY = import.meta.env.VITE_MOIVE_API_KEY;
+const BASE_URI = import.meta.env.VITE_MOVIE_BASE_URI;
 
 const request = {
     fetchTrending: `${BASE_URI}trending/all/week?api_key=${API_KEY}&language=en-US`,
