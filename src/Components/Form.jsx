@@ -1,23 +1,23 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { EmailContext, PasswordContext } from "../context";
+import { EmailContext, LoginStateContext, PasswordContext } from "../context";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import 'react-toastify/dist/ReactToastify.css';
 import { showErrorToast, showSuccessToast } from "../HelperFiles/toast";
 import { app } from '../firebase';
 
 function Form({ heading1 }) {
-    console.log(app);
-
     const auth = getAuth(app);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [login, setLogin] = useState(false);
     const navigate = useNavigate();
 
 
     const signInUser = () => {
         signInWithEmailAndPassword(auth, email, password).then(() => {
-            showSuccessToast('Log In Successfully')
+            <LoginStateContext.Provider value = {login}></LoginStateContext.Provider>
+            showSuccessToast('LogIn Successfully')
             navigate('/Netflix');
 
         }).catch((err) => {

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaPowerOff } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { showSuccessToast } from "../HelperFiles/toast";
+import Search from "./Search";
 function Navbar() {
     const naivgate = useNavigate();
     const [, setSignIn] = useState(true);
@@ -9,6 +11,11 @@ function Navbar() {
     function handleSignOff() {
         setSignIn(false);
         naivgate('/');
+        showSuccessToast("Signed Out Successfully");
+    }
+
+    function handleSearch(e) {
+        e.target.value();
     }
 
     return <>
@@ -23,7 +30,7 @@ function Navbar() {
                 </li>
             </div>
             <div className="flex gap-10 justify-center items-center">
-                <div className=""><FaSearch className="size-4 " /></div>
+                <Search />
                 <button onClick={handleSignOff}><FaPowerOff /></button>
             </div>
         </div>
