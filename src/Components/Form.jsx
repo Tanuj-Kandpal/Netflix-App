@@ -1,25 +1,25 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { EmailContext, LoginStateContext, PasswordContext } from "../context";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import 'react-toastify/dist/ReactToastify.css';
 import { showErrorToast, showSuccessToast } from "../HelperFiles/toast";
 import { app } from '../firebase';
+import { useRecoilState } from "recoil";
+import { loginAtom } from "../store/login";
 
 function Form({ heading1 }) {
     const auth = getAuth(app);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [login, setLogin] = useState(false);
     const navigate = useNavigate();
-
+    const [login, setLogin] = useRecoilState(loginAtom);
 
     const signInUser = () => {
         signInWithEmailAndPassword(auth, email, password).then(() => {
-            <LoginStateContext.Provider value = {login}></LoginStateContext.Provider>
             showSuccessToast('LogIn Successfully')
+            setLogin(true);
             navigate('/Netflix');
-
         }).catch((err) => {
             const updatedMsg = err.message.split(':');
             showErrorToast(updatedMsg[1]);
@@ -29,6 +29,7 @@ function Form({ heading1 }) {
     const signupUser = () => {
         createUserWithEmailAndPassword(auth, email, password).then(() => {
             showSuccessToast('Account Created Successfully')
+            setLogin(true);
             navigate('/Netflix');
         }).catch((error) => {
             const updatedMsg = error.message.split(':');

@@ -7,7 +7,6 @@ import Row from "../Components/Row";
 function Netflix() {
 
     const [netflixData, setNetflixData] = useState([]);
-
     const randomNum = Math.floor(Math.random() * 20);
     const image_baseuri = `https://image.tmdb.org/t/p/original/`;
 
@@ -20,6 +19,7 @@ function Netflix() {
         })();
     }, []);
     const finalImage = `${image_baseuri}${netflixData[randomNum]?.backdrop_path}`;
+
     return <>
         <div className="bg-[#111111] scroll-smooth">
             <div style={{
@@ -40,8 +40,6 @@ function Netflix() {
             <Row heading={"Romance"} fetchUrl={request.fetchRomanceMovie} />
             <Row heading={"Documentry"} fetchUrl={request.fetchDocumentaryMovie} />
         </div>
-
-
     </>
 }
 

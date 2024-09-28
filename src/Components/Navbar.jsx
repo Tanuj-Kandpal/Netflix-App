@@ -1,21 +1,35 @@
-import { useState } from "react";
-import { FaSearch } from "react-icons/fa";
+import { useEffect, useState } from "react";
 import { FaPowerOff } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { showSuccessToast } from "../HelperFiles/toast";
 import Search from "./Search";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { loginAtom } from "../store/login";
 function Navbar() {
     const naivgate = useNavigate();
     const [, setSignIn] = useState(true);
-
+    const login = useRecoilValue(loginAtom);
+    const setLogin = useSetRecoilState(loginAtom);
+    localStorage.setItem("login", login);
     function handleSignOff() {
+        // setLogin(false)
         setSignIn(false);
         naivgate('/');
         showSuccessToast("Signed Out Successfully");
     }
 
+    useEffect(() => {
+        const data = window.localStorage.getItem('login');
+        console.log(data);
+        if (data !== null) setLogin(data);
+    }, []);
+
     function handleSearch(e) {
         e.target.value();
+    }
+
+    function SwitchOff() {
+        return <button onClick={handleSignOff} ><FaPowerOff style={login ? { fill: "#66FF00" } : { fill: "red" }} /></button>
     }
 
     return <>
@@ -31,9 +45,10 @@ function Navbar() {
             </div>
             <div className="flex gap-10 justify-center items-center">
                 <Search />
-                <button onClick={handleSignOff}><FaPowerOff /></button>
+                <SwitchOff />
             </div>
         </div>
+
     </>
 
 }
