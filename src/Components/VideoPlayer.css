@@ -1,0 +1,58 @@
+/* Styles for the App */
+.app-container {
+    padding: 20px;
+    transition: filter 0.3s ease;
+}
+
+.blur-background {
+    filter: blur(5px);
+    /* Adjust the blur strength as needed */
+}
+
+/* Modal overlay for video player */
+.video-player-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* Video player content */
+.video-player-content {
+    position: relative;
+    background-color: #000;
+    padding: 20px;
+    border-radius: 8px;
+    width: 640px;
+    max-width: 90%;
+}
+
+/* Close button styling */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background-color: #6a0dad;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    background-color: #5e0c99;
+}
+
+/* Video styling */
+.video-element {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}

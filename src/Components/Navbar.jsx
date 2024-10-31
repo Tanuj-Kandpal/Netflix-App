@@ -12,7 +12,6 @@ function Navbar() {
     const setLogin = useSetRecoilState(loginAtom);
     localStorage.setItem("login", login);
     function handleSignOff() {
-        // setLogin(false)
         setSignIn(false);
         naivgate('/');
         showSuccessToast("Signed Out Successfully");
@@ -20,7 +19,6 @@ function Navbar() {
 
     useEffect(() => {
         const data = window.localStorage.getItem('login');
-        console.log(data);
         if (data !== null) setLogin(data);
     }, []);
 
