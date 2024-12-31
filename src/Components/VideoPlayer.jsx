@@ -1,4 +1,4 @@
-import {  } from "react";
+import { } from "react";
 import "../Components/VideoPlayer.css"
 function VideoPlayer({ videoUrl, onClose }) {
     return <>
@@ -10,7 +10,6 @@ function VideoPlayer({ videoUrl, onClose }) {
                     height="360"
                     src={videoUrl}
                     title="YouTube video player"
-                    frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                 ></iframe>
