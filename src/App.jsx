@@ -7,21 +7,29 @@ import {
 } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import LoginPage from "./Pages/LoginPage";
-import Netflix from "./Pages/Netflix";
+// import Netflix from "./Pages/Netflix";
 import SignUpPage from "./Pages/SignUpPage";
 import ErrorPage from "./Pages/ErrorPage";
+import { lazy, Suspense } from "react";
+import ShimmerPage from "./Components/Shimmer";
+
+//Lazy on demand
+const Netflix = lazy(function () {
+  return import("./Pages/Netflix");
+});
 
 function App() {
- 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/Login" element={<LoginPage />} />
-        <Route path="/" element={<HomePage />} />
-        <Route path="/Netflix" element={<Netflix />} />
-        <Route path="/SignUp" element={<SignUpPage />}></Route>
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
+      <Suspense fallback={<ShimmerPage />}>
+        <Routes>
+          <Route path="/Login" element={<LoginPage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/Netflix" element={<Netflix />} />
+          <Route path="/SignUp" element={<SignUpPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }

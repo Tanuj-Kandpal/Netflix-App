@@ -16,8 +16,6 @@ function useMovies(movie) {
     //unmounting phase
     return () => {};
   }, []);
-  console.log(netflixData);
-
   return netflixData;
 }
 
