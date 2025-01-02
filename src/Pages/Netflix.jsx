@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Banner from "../Components/Banner";
 import Navbar from "../Components/Navbar";
-import request from "../request";
 import Row from "../Components/Row";
-import useMovies from "../Hooks/useMovies";
 import { image_baseuri } from "../HelperFiles/constants.jsx";
+import useMovies from "../Hooks/useMovies";
+import request from "../request";
 
 function Netflix() {
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
   const randomNum = Math.floor(Math.random() * 20);
   const netflixDataValue = useMovies(request.fetchNetflixOriginals);
   const finalImage = `${image_baseuri}${netflixDataValue[randomNum]?.backdrop_path}`;
+
   return (
     <>
       <div className="bg-[#111111] scroll-smooth">

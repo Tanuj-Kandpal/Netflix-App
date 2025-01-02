@@ -1,17 +1,15 @@
 import {
   BrowserRouter,
   Route,
-  Routes,
-  useRouteError,
-  useRouteLoaderData,
+  Routes
 } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import LoginPage from "./Pages/LoginPage";
 // import Netflix from "./Pages/Netflix";
-import SignUpPage from "./Pages/SignUpPage";
-import ErrorPage from "./Pages/ErrorPage";
 import { lazy, Suspense } from "react";
 import ShimmerPage from "./Components/Shimmer";
+import ErrorPage from "./Pages/ErrorPage";
+import SignUpPage from "./Pages/SignUpPage";
 
 //Lazy on demand
 const Netflix = lazy(function () {
