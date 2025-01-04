@@ -14,6 +14,7 @@ function HomePage() {
   function SignInLanguage({ title }) {
     return (
       <button
+        data-testid="signInButton"
         onClick={handleNavigation}
         className="bg-[#C11119] hover:cursor-pointer p-1 px-3 rounded-md font-bold text-white text"
       >
@@ -31,7 +32,10 @@ function HomePage() {
       <div className="bg-netflix h-screen">
         <div className=" h-screen">
           <div className="flex justify-around">
-            <div className="w-52 fill-[#C11119] mt-9 ">
+            <div
+              data-testid="netflix-logo"
+              className="w-52 fill-[#C11119] mt-9 "
+            >
               <svg
                 viewBox="0 0 111 30"
                 version="1.1"
