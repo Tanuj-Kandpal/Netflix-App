@@ -1,16 +1,17 @@
-import { useNavigate, useRouteError } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Errorsvg from "../assets/undraw_page-not-found_6wni.svg";
 function ErrorPage() {
-  //This is breaking change breaking a code -- giving folllowing error -
-  /**
- * 
- * react-router-dom.js?v=babeff83:209 Uncaught Error: useRouteError must be used within a data router.  See https://reactrouter.com/routers/picking-a-router.
-    at ErrorPage (ErrorPage.jsx?t=1735584783127:21:17)
- */
-  //   const error = useRouteError();
-  //   console.log(error);
-  const navigate = useNavigate();
+  //This will showcase the error for the error page, hook know as useRouteError
+  /***
+   *
+   * const error = useRouteError();
+   *  console.log(error);
+   *
+   *
+   */
+  //
 
+  const navigate = useNavigate();
   function handleNavigate() {
     navigate("/");
   }
