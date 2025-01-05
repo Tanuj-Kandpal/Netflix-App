@@ -5,6 +5,8 @@ import { image_baseuri } from "../HelperFiles/constants";
 import ShimmerPage from "./../Components/Shimmer";
 import ErrorPage from "./ErrorPage";
 
+const tokenId = import.meta.env.VITE_TOKEN_ID;
+
 function SearchPage() {
   const location = useLocation();
   const input = location.state;
@@ -16,8 +18,7 @@ function SearchPage() {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlY2E4MTc2YjgzYTc2ZjVhYWZiNTM5MTFiNTRmYTY1MiIsIm5iZiI6MTcyNDkzNDU0My44NzY5OTk5LCJzdWIiOiI2NmQwNjk4ZjA3OTAzN2JkZjEwMzJkNjIiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.4jKIOhdU0eJ3eByi9u2xg5gNFnZxBNeiWdUkRJ5yPIk",
+      Authorization: tokenId,
     },
   };
 
