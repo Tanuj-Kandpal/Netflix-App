@@ -1,20 +1,20 @@
 import { useContext, useEffect, useState } from "react";
 import { FaPowerOff } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { showSuccessToast } from "../HelperFiles/toast";
 import Search from "./Search";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { loginAtom } from "../store/login";
 import { AuthContext } from "../Contexts/AuthContext";
 function Navbar() {
-  const naivgate = useNavigate();
+  const navigate = useNavigate();
   const [, setSignIn] = useState(true);
   const login = useRecoilValue(loginAtom);
   const setLogin = useSetRecoilState(loginAtom);
   localStorage.setItem("login", login);
   function handleSignOff() {
     setSignIn(false);
-    naivgate("/");
+    navigate("/");
     showSuccessToast("Signed Out Successfully");
   }
 
@@ -57,7 +57,10 @@ function Navbar() {
             </svg>
           </div>
           <li className="flex gap-10">
-            <ul>Home</ul>
+            <ul>
+              {" "}
+              <Link to="/Netflix">Home</Link>
+            </ul>
             <ul>TV Shows</ul>
             <ul>Movie List</ul>
             <ul>My List</ul>

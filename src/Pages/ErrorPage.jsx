@@ -13,7 +13,7 @@ function ErrorPage() {
 
   const navigate = useNavigate();
   function handleNavigate() {
-    navigate("/");
+    navigate("/Netflix");
   }
   return (
     <>
