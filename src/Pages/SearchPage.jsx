@@ -58,7 +58,7 @@ function SearchPage() {
     <>
       <div className="bg-black h-screen">
         <Navbar />
-        <div className="flex flex-wrap gap-8 p-10 max-h-max bg-black ">
+        <div className="flex flex-wrap gap-8 p-10 max-h-max justify-center bg-black ">
           {response?.results.map(function (curr) {
             if (curr?.backdrop_path && curr?.overview) {
               return (
