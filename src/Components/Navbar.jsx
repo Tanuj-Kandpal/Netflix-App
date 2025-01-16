@@ -39,7 +39,7 @@ function Navbar() {
 
   return (
     <>
-      <div className="flex justify-between px-16 py-5 text-white font-semibold hover:cursor-pointer">
+      <div className="flex justify-between px-16 py-10 text-white font-semibold hover:cursor-pointer">
         <div className="flex items-center gap-10">
           <div className="w-52 fill-[#C11119]">
             <svg
@@ -61,7 +61,9 @@ function Navbar() {
               {" "}
               <Link to="/Netflix">Home</Link>
             </ul>
-            <ul>TV Shows</ul>
+            <ul>
+              <Link to="/TvShows">TV Shows</Link>
+            </ul>
             <ul>Movie List</ul>
             <ul>My List</ul>
           </li>

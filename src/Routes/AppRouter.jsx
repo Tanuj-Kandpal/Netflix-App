@@ -6,6 +6,7 @@ import LoginPage from "./../Pages/LoginPage";
 import { lazy, Suspense } from "react";
 import ShimmerPage from "../Components/Shimmer";
 import SearchPage from "../Pages/SearchPage";
+import TvShows from "../Pages/TvShows";
 
 //Lazy on Demand
 const Netflix = lazy(function () {
@@ -37,6 +38,10 @@ const appRouter = createBrowserRouter([
   {
     path: "/Signup",
     element: <SignUpPage />,
+  },
+  {
+    path: "/TvShows",
+    element: <TvShows />,
   },
   {
     path: "/Login",
