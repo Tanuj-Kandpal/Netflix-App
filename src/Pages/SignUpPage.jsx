@@ -1,12 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import Form from "../Components/Form";
+import { AuthContext } from "../Contexts/AuthContext";
+import { useContext, useEffect } from "react";
 
 function SignUpPage() {
   const navigate = useNavigate();
+  const { setEmail, setPassword } = useContext(AuthContext);
 
   function handleNavigation() {
     navigate("/Login");
   }
+
+  useEffect(() => {
+    // Reset values when the component mounts
+    setEmail("");
+    setPassword("");
+  }, [setEmail, setPassword]); // Dependencies ensure reset happens on navigation
   return (
     <>
       <div className="bg-netflix flex justify-center items-center h-screen">

@@ -14,8 +14,8 @@ import { loginAtom } from "../store/login";
 
 function Form({ heading1 }) {
   const auth = getAuth(app);
-  const { email, setEmail, password, setPassword } = useContext(AuthContext);
   const navigate = useNavigate();
+  const { email, setEmail, password, setPassword } = useContext(AuthContext);
   const [, setLogin] = useRecoilState(loginAtom);
 
   const signInUser = () => {
@@ -66,14 +66,16 @@ function Form({ heading1 }) {
     <>
       <input
         className="p-3 rounded-lg text-white  bg-[#121312]"
-        type="text"
+        type="email"
         onChange={handleEmail}
         placeholder="Email Address"
         value={email}
+        required
       />
       <input
         className="p-3 rounded-lg text-white bg-[#121312]"
         onChange={handlePassword}
+        required
         type="password"
         placeholder="Password"
         value={password}
