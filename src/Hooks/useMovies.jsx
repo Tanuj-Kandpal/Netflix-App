@@ -7,7 +7,7 @@ function useMovies(movie) {
       try {
         const response = await fetch(movie);
         const res = await response.json();
-        const { page, results } = res;
+        const { results } = res;
         setNetflixData(results);
       } catch (error) {
         console.error("Error loading netflix data: ", error);

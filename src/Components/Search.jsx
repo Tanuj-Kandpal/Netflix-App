@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 function Search() {
   let [input, setInput] = useState("");
   const navigate = useNavigate();
-  const [debouncevalue, setDebounceValue] = useState("");
+  const [, setDebounceValue] = useState("");
 
   function handleSearch() {
     navigate("/Search", { state: input });
@@ -33,7 +33,7 @@ function Search() {
 
   return (
     <>
-      <div className="flex justify-center items-center gap-2">
+      <div className="flex justify-center items-center gap-2 outline-none">
         <input
           className="rounded-full p-1 px-6 text-black"
           type="search"

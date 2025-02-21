@@ -22,6 +22,7 @@ function Row({ heading, fetchUrl }) {
             return (
               <img
                 key={series.id}
+                loading="lazy"
                 className="h-72 rounded-sm hover:scale-105 transition-all"
                 src={`${image_baseurl}${series.poster_path}`}
                 alt=""
