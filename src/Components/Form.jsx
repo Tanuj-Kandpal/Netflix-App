@@ -11,6 +11,7 @@ import { AuthContext } from "../Contexts/AuthContext";
 import { showErrorToast, showSuccessToast } from "../HelperFiles/toast";
 import { app } from "../firebase";
 import { loginAtom } from "../store/login";
+import { randomId } from "../HelperFiles/constants";
 
 function Form({ heading1 }) {
   const auth = getAuth(app);
@@ -72,8 +73,6 @@ function Form({ heading1 }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(heading1);
-
     if (heading1 !== "Sign In") {
       signupUser();
     } else {
