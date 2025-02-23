@@ -1,12 +1,14 @@
+import { lazy, Suspense } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 import { createBrowserRouter } from "react-router-dom";
+import ShimmerPage from "../Components/Shimmer";
 import HomePage from "../Pages/HomePage";
+import SearchPage from "../Pages/SearchPage";
 import SignUpPage from "../Pages/SignUpPage";
+import TvShows from "../Pages/TvShows";
 import ErrorPage from "./../Pages/ErrorPage";
 import LoginPage from "./../Pages/LoginPage";
-import { lazy, Suspense } from "react";
-import ShimmerPage from "../Components/Shimmer";
-import SearchPage from "../Pages/SearchPage";
-import TvShows from "../Pages/TvShows";
+import BoundaryErrors from "../Components/BoundaryErrors";
 
 //Lazy on Demand
 const Netflix = lazy(function () {
@@ -28,16 +30,14 @@ const appRouter = createBrowserRouter([
     element: <SignUpPage />,
   },
   {
-    path: "/Netflix",
+    path: "/Netflix/:id",
     element: (
+      // <ErrorBoundary FallbackComponent={BoundaryErrors}>
       <Suspense fallback={<ShimmerPage />}>
-        <Netflix />
+          <Netflix />
       </Suspense>
+      // </ErrorBoundary>
     ),
-  },
-  {
-    path: "/Signup",
-    element: <SignUpPage />,
   },
   {
     path: "/TvShows",

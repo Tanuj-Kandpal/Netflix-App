@@ -18,30 +18,46 @@ function Form({ heading1 }) {
   const { email, setEmail, password, setPassword } = useContext(AuthContext);
   const [, setLogin] = useRecoilState(loginAtom);
 
-  const signInUser = () => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        showSuccessToast("LogIn Successfully");
-        setLogin(true);
-        navigate(`/Netflix?email=${email}&encryption='true'`);
-      })
-      .catch((err) => {
-        const updatedMsg = err.message.split(":");
-        showErrorToast(updatedMsg[1]);
-      });
+  const { setAuthenticatedUser } = useContext(IsUserAuthenticated);
+
+  const signInUser = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      showSuccessToast("LogIn Successfully");
+      setLogin(true);
+      navigate(`/Netflix/${randomId}?email=${email}&encryption='true'`);
+    } catch (err) {
+      const updatedMsg = err.message.split(":");
+      showErrorToast(updatedMsg[1]);
+    }
   };
 
-  const signupUser = () => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        showSuccessToast("Account Created Successfully");
-        setLogin(true);
-        navigate(`/Netflix?email=${email}&encryption='true'`);
-      })
-      .catch((error) => {
-        const updatedMsg = error.message.split(":");
-        showErrorToast(updatedMsg[1]);
-      });
+  // // Get the currently signed-in user
+  // const user = auth.currentUser;
+
+  // // Get the ID token (if the user is signed in)
+  // if (user) {
+  //   user
+  //     .getIdToken()
+  //     .then((idToken) => {
+  //       // Send the ID token to your backend server for verification
+  //       console.log("ID Token:", idToken);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error getting ID token:", error);
+  //     });
+  // }
+
+  const signupUser = async () => {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      showSuccessToast("Account Created Successfully");
+      setLogin(true);
+      navigate(`/Netflix/${randomId}?email=${email}&encryption='true'`);
+    } catch (error) {
+      const updatedMsg = error.message.split(":");
+      showErrorToast(updatedMsg[1]);
+    }
   };
 
   function handleEmail(email) {
@@ -67,30 +83,30 @@ function Form({ heading1 }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-        <input
-          className="p-3 rounded-lg text-white  bg-[#121312]"
-          type="email"
-          onChange={handleEmail}
-          placeholder="Email Address"
-          value={email}
-          required
-        />
-        <input
-          className="p-3 rounded-lg text-white bg-[#121312]"
-          onChange={handlePassword}
-          required
-          type="password"
-          placeholder="Password"
-          value={password}
-        />
-        <button
-          className="p-3 rounded-lg text-white bg-[#C11119]"
-          type="submit"
-        >
-          {heading1}
-        </button>
-      </form>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+          <input
+            className="p-3 rounded-lg text-white  bg-[#121312]"
+            type="email"
+            onChange={handleEmail}
+            placeholder="Email Address"
+            value={email}
+            required
+          />
+          <input
+            className="p-3 rounded-lg text-white bg-[#121312]"
+            onChange={handlePassword}
+            required
+            type="password"
+            placeholder="Password"
+            value={password}
+          />
+          <button
+            className="p-3 rounded-lg text-white bg-[#C11119]"
+            type="submit"
+          >
+            {heading1}
+          </button>
+        </form>
     </>
   );
 }

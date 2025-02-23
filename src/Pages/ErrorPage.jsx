@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Errorsvg from "../assets/undraw_page-not-found_6wni.svg";
 function ErrorPage() {
-  //This will showcase the error for the error page, hook know as useRouteError
+  //This will showcase the error for the error page, hook known as useRouteError
   /***
    *
    * const error = useRouteError();

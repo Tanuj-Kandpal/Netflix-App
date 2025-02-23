@@ -12,6 +12,8 @@ function Netflix() {
   const netflixDataValue = useMovies(request.fetchNetflixOriginals);
   const finalImage = `${image_baseuri}${netflixDataValue[randomNum]?.backdrop_path}`;
 
+  // const { id } = useParams();
+
   return (
     <>
       <div className="bg-[#111111] scroll-smooth">

@@ -6,7 +6,7 @@ function LoginPage() {
   const [, setshowUnreguser] = useState(false);
   const [showReguser, setshowReguser] = useState(true);
   const navigate = useNavigate();
-  const { email, setEmail, password, setPassword } = useContext(AuthContext);
+  const { setEmail, setPassword } = useContext(AuthContext);
 
   function handleUnreguser() {
     navigate("/SignUp");

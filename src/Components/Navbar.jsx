@@ -6,12 +6,13 @@ import Search from "./Search";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { loginAtom } from "../store/login";
 import { AuthContext } from "../Contexts/AuthContext";
+
 function Navbar() {
   const navigate = useNavigate();
   const [, setSignIn] = useState(true);
   const login = useRecoilValue(loginAtom);
   const setLogin = useSetRecoilState(loginAtom);
-  localStorage.setItem("login", login);
+
   function handleSignOff() {
     setSignIn(false);
     navigate("/");
