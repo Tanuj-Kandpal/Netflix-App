@@ -11,8 +11,6 @@ import { AuthContext } from "../Contexts/AuthContext";
 import { showErrorToast, showSuccessToast } from "../HelperFiles/toast";
 import { app } from "../firebase";
 import { loginAtom } from "../store/login";
-// import { randomId } from "../HelperFiles/constants";
-// import IsUserAuthenticated from "./IsUserAuthenticated";
 
 function Form({ heading1 }) {
   const auth = getAuth(app);
@@ -21,14 +19,11 @@ function Form({ heading1 }) {
   const { email, setEmail, password, setPassword } = useContext(AuthContext);
   const [, setLogin] = useRecoilState(loginAtom);
 
-  // const { setAuthenticatedUser } = useContext(IsUserAuthenticated);
-
   const signInUser = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       showSuccessToast("LogIn Successfully");
       setLogin(true);
-      // setAuthenticatedUser(true);
       navigate(`/Netflix/?email=${email}&encryption='true'`);
     } catch (err) {
       const updatedMsg = err.message.split(":");
@@ -36,28 +31,11 @@ function Form({ heading1 }) {
     }
   };
 
-  // // Get the currently signed-in user
-  // const user = auth.currentUser;
-
-  // // Get the ID token (if the user is signed in)
-  // if (user) {
-  //   user
-  //     .getIdToken()
-  //     .then((idToken) => {
-  //       // Send the ID token to your backend server for verification
-  //       console.log("ID Token:", idToken);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error getting ID token:", error);
-  //     });
-  // }
-
   const signupUser = async () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       showSuccessToast("Account Created Successfully");
       setLogin(true);
-      // setAuthenticatedUser(true);
       navigate(`/Netflix/?email=${email}&encryption='true'`);
     } catch (error) {
       const updatedMsg = error.message.split(":");
@@ -86,7 +64,6 @@ function Form({ heading1 }) {
 
   return (
     <>
-      {/* <IsUserAuthenticated.Provider value={setAuthenticatedUser}> */}
       <form onSubmit={handleSubmit} className="flex flex-col gap-6">
         <input
           className="p-3 rounded-lg text-white  bg-[#121312]"
@@ -111,7 +88,6 @@ function Form({ heading1 }) {
           {heading1}
         </button>
       </form>
-      {/* </IsUserAuthenticated.Provider> */}
     </>
   );
 }

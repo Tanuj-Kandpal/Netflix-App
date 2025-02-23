@@ -2,7 +2,10 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "../Components/Form";
 import { AuthContext } from "../Contexts/AuthContext";
+
+
 function LoginPage() {
+  
   const [, setshowUnreguser] = useState(false);
   const [showReguser, setshowReguser] = useState(true);
   const navigate = useNavigate();

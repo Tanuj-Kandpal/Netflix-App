@@ -6,13 +6,13 @@ import { RecoilRoot } from "recoil";
 import { AuthProvider } from "./Contexts/AuthContext.jsx";
 import { ToastContainer } from "react-toastify";
 import { RouterProvider } from "react-router-dom";
-import appRouter from "./Routes/AppRouter.jsx";
+import AppRouter from "./Routes/AppRouter.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RecoilRoot>
       <AuthProvider>
-        <RouterProvider router={appRouter}>
+        <RouterProvider router={AppRouter}>
           <App />
         </RouterProvider>
       </AuthProvider>
