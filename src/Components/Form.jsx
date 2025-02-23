@@ -18,7 +18,7 @@ function Form({ heading1 }) {
   const { email, setEmail, password, setPassword } = useContext(AuthContext);
   const [, setLogin] = useRecoilState(loginAtom);
 
-  const { setAuthenticatedUser } = useContext(IsUserAuthenticated);
+  // const { setAuthenticatedUser } = useContext(IsUserAuthenticated);
 
   const signInUser = async () => {
     try {
