@@ -37,6 +37,8 @@ const appRouter = createBrowserRouter([
           <Netflix />
       </Suspense>
       // </ErrorBoundary>
+      <ErrorBoundary FallbackComponent={BoundaryErrors}>
+      </ErrorBoundary>
     ),
   },
   {
