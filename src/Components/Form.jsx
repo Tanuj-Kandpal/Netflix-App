@@ -11,8 +11,8 @@ import { AuthContext } from "../Contexts/AuthContext";
 import { showErrorToast, showSuccessToast } from "../HelperFiles/toast";
 import { app } from "../firebase";
 import { loginAtom } from "../store/login";
-import { randomId } from "../HelperFiles/constants";
-import IsUserAuthenticated from "./IsUserAuthenticated";
+// import { randomId } from "../HelperFiles/constants";
+// import IsUserAuthenticated from "./IsUserAuthenticated";
 
 function Form({ heading1 }) {
   const auth = getAuth(app);
