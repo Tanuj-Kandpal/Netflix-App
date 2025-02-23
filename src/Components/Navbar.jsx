@@ -60,7 +60,9 @@ function Navbar() {
           <li className="flex gap-10">
             <ul>
               {" "}
-              <Link to="/Netflix">Home</Link>
+              <Link to={`/Netflix/?email=${email}&encryption='true'`}>
+                Home
+              </Link>
             </ul>
             <ul>
               <Link to="/TvShows">TV Shows</Link>

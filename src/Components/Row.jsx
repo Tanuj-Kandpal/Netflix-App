@@ -17,7 +17,7 @@ function Row({ heading, fetchUrl }) {
     <>
       <div className="mt-9 ml-10 overflow-hidden w-6/6 mr-10">
         <div className="text-white text-2xl  font-bold mb-6">{heading}</div>
-        <div className="flex gap-2 overflow-x-scroll no-scrollbar w-screen">
+        <div className="flex gap-2 overflow-x-scroll no-scrollbar w-screen overflow-y-hidden">
           {series.map((series) => {
             return (
               <img
