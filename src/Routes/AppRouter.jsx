@@ -32,12 +32,10 @@ const appRouter = createBrowserRouter([
   {
     path: "/Netflix/:id",
     element: (
-      // <ErrorBoundary FallbackComponent={BoundaryErrors}>
-      <Suspense fallback={<ShimmerPage />}>
-          <Netflix />
-      </Suspense>
-      // </ErrorBoundary>
       <ErrorBoundary FallbackComponent={BoundaryErrors}>
+        <Suspense fallback={<ShimmerPage />}>
+            <Netflix />
+        </Suspense>
       </ErrorBoundary>
     ),
   },
