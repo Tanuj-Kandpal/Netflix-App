@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Form from "../Components/Form";
 import { AuthContext } from "../Contexts/AuthContext";
-import { useContext, useEffect } from "react";
+import { memo, useContext, useEffect } from "react";
 
 function SignUpPage() {
   const navigate = useNavigate();
@@ -33,4 +33,4 @@ function SignUpPage() {
   );
 }
 
-export default SignUpPage;
+export default memo(SignUpPage);

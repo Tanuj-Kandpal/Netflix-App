@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import { image_baseuri } from "../HelperFiles/constants";
@@ -82,4 +82,4 @@ function SearchPage() {
   );
 }
 
-export default SearchPage;
+export default memo(SearchPage);

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import Banner from "../Components/Banner";
 import Navbar from "../Components/Navbar";
 import Row from "../Components/Row";
@@ -55,4 +55,4 @@ function Netflix() {
   );
 }
 
-export default Netflix;
+export default memo(Netflix);
