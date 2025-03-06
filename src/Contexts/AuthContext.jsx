@@ -3,8 +3,8 @@ import { createContext, useState } from "react";
 const AuthContext = createContext({});
 
 const AuthProvider = ({ children }) => {
-  const [email, setEmail] = useState("dummyuser@getnada.com");
-  const [password, setPassword] = useState("dummy123@@");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <AuthContext.Provider value={{ email, setEmail, password, setPassword }}>
@@ -14,4 +14,3 @@ const AuthProvider = ({ children }) => {
 };
 
 export { AuthContext, AuthProvider };
-

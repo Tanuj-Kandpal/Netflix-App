@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LanguageSelector from "../Components/LanguageSelector";
 
@@ -21,11 +21,14 @@ function HomePage() {
         {title}
       </button>
     );
-  }
+  };
 
-  function handleLanguage(e) {
-    setLang(e.target.value);
-  }
+  const handleLanguage = useCallback(
+    function handleLanguage(e) {
+      setLang(e.target.value);
+    },
+    [lang]
+  );
 
   return (
     <>
@@ -83,4 +86,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default memo(HomePage);

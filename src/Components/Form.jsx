@@ -3,7 +3,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { useRecoilState } from "recoil";
@@ -16,15 +16,17 @@ function Form({ heading1 }) {
   const auth = getAuth(app);
 
   const navigate = useNavigate();
-  const { email, setEmail, password, setPassword } = useContext(AuthContext);
+  const [localemail, setLocalEmail] = useState("dummyuser@getnada.com");
+  const [localpassword, setLocalPassword] = useState("dummy123@@");
+  const { setEmail, setPassword } = useContext(AuthContext);
   const [, setLogin] = useRecoilState(loginAtom);
 
   const signInUser = async () => {
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth, localemail, localpassword);
       showSuccessToast("LogIn Successfully");
       setLogin(true);
-      navigate(`/Netflix/?email=${email}&encryption='true'`);
+      navigate(`/Netflix/?email=${localemail}&encryption='true'`);
     } catch (err) {
       const updatedMsg = err.message.split(":");
       showErrorToast(updatedMsg[1]);
@@ -33,28 +35,28 @@ function Form({ heading1 }) {
 
   const signupUser = async () => {
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      await createUserWithEmailAndPassword(auth, localemail, localpassword);
       showSuccessToast("Account Created Successfully");
       setLogin(true);
-      navigate(`/Netflix/?email=${email}&encryption='true'`);
+      navigate(`/Netflix/?email=${localemail}&encryption='true'`);
     } catch (error) {
       const updatedMsg = error.message.split(":");
       showErrorToast(updatedMsg[1]);
     }
   };
 
-  function handleEmail(email) {
-    const enteredEmail = email.target.value;
-    setEmail(enteredEmail);
+  function handleEmail(e) {
+    setLocalEmail(e.target.value);
   }
 
-  function handlePassword(password) {
-    const enteredPassword = password.target.value;
-    setPassword(enteredPassword);
+  function handlePassword(e) {
+    setLocalPassword(e.target.value);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
+    setEmail(localemail);
+    setPassword(localpassword);
     if (heading1 !== "Sign In") {
       signupUser();
     } else {
@@ -70,7 +72,7 @@ function Form({ heading1 }) {
           type="email"
           onChange={handleEmail}
           placeholder="Email Address"
-          value={email}
+          value={localemail}
           required
         />
         <input
@@ -79,7 +81,7 @@ function Form({ heading1 }) {
           required
           type="password"
           placeholder="Password"
-          value={password}
+          value={localpassword}
         />
         <button
           className="p-3 rounded-lg text-white bg-[#C11119]"
