@@ -11,6 +11,8 @@ import { AuthContext } from "../Contexts/AuthContext";
 import { showErrorToast, showSuccessToast } from "../HelperFiles/toast";
 import { app } from "../firebase";
 import { loginAtom } from "../store/login";
+import ReCAPTCHA from "react-google-recaptcha";
+const googleSiteKey = import.meta.env.VITE_SITE_KEY;
 
 function Form({ heading1 }) {
   const auth = getAuth(app);
@@ -18,6 +20,7 @@ function Form({ heading1 }) {
   const navigate = useNavigate();
   const [localemail, setLocalEmail] = useState("dummyuser@getnada.com");
   const [localpassword, setLocalPassword] = useState("dummy123@@");
+  const [captchaValue, setCaptchaValue] = useState(false);
   const { setEmail, setPassword } = useContext(AuthContext);
   const [, setLogin] = useRecoilState(loginAtom);
 
@@ -54,14 +57,22 @@ function Form({ heading1 }) {
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
-    setEmail(localemail);
-    setPassword(localpassword);
-    if (heading1 !== "Sign In") {
-      signupUser();
+    if (captchaValue) {
+      e.preventDefault();
+      setEmail(localemail);
+      setPassword(localpassword);
+      if (heading1 !== "Sign In") {
+        signupUser();
+      } else {
+        signInUser();
+      }
     } else {
-      signInUser();
+      showErrorToast("Select Captcha Please to proceed");
     }
+  }
+
+  function onChange() {
+    setCaptchaValue(true);
   }
 
   return (
@@ -83,6 +94,7 @@ function Form({ heading1 }) {
           placeholder="Password"
           value={localpassword}
         />
+        <ReCAPTCHA sitekey={googleSiteKey} onChange={onChange} />
         <button
           className="p-3 rounded-lg text-white bg-[#C11119]"
           type="submit"
