@@ -7,11 +7,12 @@ function VideoPlayer({ videoUrl, onClose }) {
                 <button className="close-btn" onClick={onClose}>Close</button>
                 <iframe
                     width="100%"
-                    height="360"
+                    height="100%" 
                     src={videoUrl}
                     title="YouTube video player"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
+                    className="w-full aspect-video"
                 ></iframe>
             </div>
         </div>

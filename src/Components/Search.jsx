@@ -33,7 +33,7 @@ function Search() {
 
   return (
     <>
-      <div className="flex justify-center items-center gap-2 outline-none">
+      <div className="hidden lg:flex justify-center items-center gap-2 outline-none">
         <input
           className="rounded-full p-1 px-6 text-black"
           type="search"

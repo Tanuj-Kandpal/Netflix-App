@@ -23,11 +23,14 @@ function Netflix() {
         ) : (
           <div
             style={{
-              backgroundSize: "cover",
+              backgroundSize: "cover", // Ensures it covers the container
+              backgroundPosition: "center", // Centers the image
               backgroundImage: `url("${finalImage}")`,
               backgroundRepeat: "no-repeat",
               height: "100%",
+              minHeight: "200px", // Ensures it doesn’t shrink too much
             }}
+            className="sm:bg-contain sm:bg-center sm:min-h-[150px] md:min-h-[250px]"
           >
             <Navbar />
             <Banner

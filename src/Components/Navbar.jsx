@@ -40,9 +40,9 @@ function Navbar() {
 
   return (
     <>
-      <div className="flex justify-between px-16 py-10 text-white font-semibold hover:cursor-pointer">
+      <div className="hidden lg:flex justify-between px-16 py-10 text-white font-semibold hover:cursor-pointer">
         <div className="flex items-center gap-10">
-          <div className="w-52 fill-[#C11119]">
+          <div className="lg:w-52 fill-[#C11119]">
             <svg
               viewBox="0 0 111 30"
               version="1.1"
@@ -57,7 +57,7 @@ function Navbar() {
               </g>
             </svg>
           </div>
-          <li className="flex gap-10">
+          <li className="lg:flex lg:gap-10">
             <ul>
               {" "}
               <Link to={`/Netflix/?email=${email}&encryption='true'`}>
